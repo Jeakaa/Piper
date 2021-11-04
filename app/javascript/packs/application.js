@@ -8,6 +8,24 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
+// THIS IS MAKING jQuery AVAILABLE EVEN INSIDE Views FOLDER
+global.$ = require("jquery")
+
+require("jquery") // Don't really need to require this...
+require("jquery-ui")
+// бутик добавил после jquery
+require("bootstrap/dist/js/bootstrap")
+
+$(function(){
+    // Plain jquery
+    $('#fadeMe').fadeOut(5000);
+
+    // jquery-ui
+    const availableCities = ['Baltimore', 'New York'];
+    $('#cityField').autocomplete( { source: availableCities } );
+    $('#calendarField').datepicker( { dateFormat: 'yy-mm-dd' } );
+})
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
